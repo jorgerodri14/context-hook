@@ -1,0 +1,22 @@
+How to use React COntext effectively
+
+El defaultValue en un contexto solo es utilizado en situaciones en las que desestructuramos y el valor del objeto puede ser undefined. Los deberíamos poner unicamente cuando fueran útiles.
+
+Es buena práctica separar el estado del dispatch cuando usamos Context, es decir si tenemos un useState en un componente de contexto no es bueno que pasemos estado y seteo por el mismo contexto, podemos creardos y anidar el seteo al estado. Tambíen lo podemos hacer con useReducer.
+
+Es buena práctica que en vez de usar para llamar al contexto React.useContext, abstrayamos la función consumidora para exportar un useSomething, esto nos permite que en la función podamos hacer algo con el contexto, como control de errores para indicar que el componente no está dentro del contexto u otro tipo de cosas.
+
+No debe buscar el contexto para resolver todos los problemas de intercambio de estado que cruzan su escritorio.
+
+El contexto NO tiene que ser global para toda la aplicación, pero puede aplicarse a una parte de su árbol
+
+Puede (y probablemente debería) tener múltiples contextos lógicamente separados en su aplicación.
+
+OPTIMIZACIÓN DEL VALOR DE CONTEXTO
+
+Esto es interesante si se dan los siguientes casos:
+
+1.Su valor de contexto cambia con frecuencia.
+2.Su contexto tiene muchos consumidores.
+3.Te estás molestando en usar React.memo.
+Realmenta has medido cosas y sabes que es lento y necesita ser optimizado.
